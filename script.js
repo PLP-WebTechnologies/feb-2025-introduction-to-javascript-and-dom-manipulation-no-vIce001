@@ -4,6 +4,7 @@ const title = document.getElementById('originalTitle');
 const image = document.getElementById('mainImage');
 const paragraphs = document.getElementsByClassName('info');
 const link = document.getElementById('mainLink');
+const button = document.getElementById('toggleButton');
 
 // Changing Content
 title.textContent = "Interesting Facts About Ravens";
@@ -27,5 +28,23 @@ image.style.borderRadius = "20px";
 
 // Modifying Classes
 title.classList.add("highlight");
+button.classList.add("block");
 paragraphs[1].classList.remove("inactive");
 link.classList.toggle("selected");
+
+
+// Add or remove an element when a button is clicked
+const toggleButton = document.getElementById('toggleButton');
+let extraParagraph = null;
+
+toggleButton.addEventListener('click', function() {
+    if (!extraParagraph) {
+        extraParagraph = document.createElement('p');
+        extraParagraph.textContent = "Common ravens (Corvus corax) are adaptable and can thrive in a wide variety of habitats across the Northern Hemisphere. They are found in northern Europe, central Asia, and the Pacific Ocean, as well as in northwestern Africa and the Canary Islands, and in North and Central America. Ravens prefer open landscapes such as treeless tundra, seacoasts, open riverbanks, rocky cliffs, mountain forests, plains, deserts, and scrubby woodlands. They can also be found in most types of habitats except for rainforests. Additionally, ravens have adapted to human-modified environments, including rural settlements, isolated houses, and some cities, where they take advantage of artificial ponds and human garbage for survival";
+        extraParagraph.style.marginTop = "20px";
+        body.appendChild(extraParagraph);
+    } else {
+        body.removeChild(extraParagraph);
+        extraParagraph = null;
+    }
+});
